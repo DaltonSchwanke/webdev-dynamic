@@ -8,31 +8,41 @@
 	<title>TEMP</title>
 	</head>
 	<body class="grid-x">
-		<div class="cell small-12 large-12 columns;" style="background-color: aqua;">
+		<div class="cell small-12 large-12 columns;">
 			<h1 class="margins">
-				$$HEADER$$
+				Renewable Energy Around The World
 			</h1>
 		</div>
-		<div class="cell medium-12 large-6 columns" style="background-color: red;">
-			<div class="margins; text">
-				<img src="$$IMAGE$$" alt="$$DESCRIPTION$$"/>
-			</div>
-			<div>
-				<p class="margins; text">
-					The Paragraph will go here
-				</p>
+		<div class="cell medium-12 large-6 columns; grid-y">
+			<div class="grid-y">
+				<div class="cell large-10 rows; margins" style="align-items: center;">
+					<img src="$$IMAGE$$" alt="$$DESCRIPTION$$"/>
+				</div>
+				<div class="cell large-4 rows">
+					<p class="margins; text">
+						$$PARAGRAPH$$
+					</p>
+				</div>
 			</div>
 		</div>
-		<div class="cell medium-12 large-6 columns" style="background-color: yellow;">
-			<div class="margins; text">
-				$$TITLE$$
-			</div>
-			<div class="medium-12 large-6">
-				<button class="button" type="button">Previous</button>
-				<button class="button" type="button">Next</button>
-			</div>
-			<div class="margins; text">
-				TABLE GOES HERE
+		<div class="cell medium-12 large-6 columns">
+			<div class="grid-y">
+				<div class="cell large-3 rows; margins" style="text-align: center; font-size: 2rem">
+					<p>
+						$$TITLE$$
+					</p>
+				</div>
+				<div class="cell large-1 rows">
+					<div class="margins" style="float: left">
+						<button class="button" type="button">Previous</button>
+					</div>
+					<div class="margins" style="float: right;">
+						<button class="button" type="button">Next</button>
+					</div>
+				</div>
+				<div class="cell large-4 rows; margins" style="text-align: center; font-size: 2rem">
+					$$TABLE$$
+				</div>
 			</div>
 		</div>
 	</body>

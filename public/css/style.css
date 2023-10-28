@@ -2,8 +2,8 @@ html{
     font-size: 16px;
 }
 
-body{
-    background-color: rgb(218, 230, 242);
+#body{
+    background-color: rgb(63, 89, 87);
 }
 
 h1{
@@ -14,6 +14,7 @@ h1{
 
 .margins{
     margin: 2rem;
+    margin-bottom: 1rem;
 }
 
 .text{
