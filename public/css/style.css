@@ -11,28 +11,53 @@ h1{
 }
 
 .margins{
-    margin: 2rem;
+    margin: 1rem;
     margin-bottom: 1rem;
 }
 
 .text{
-    text-align: center;
     font-size: 2rem;
     color: white;
     font-family: impact, sans-serif;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
+}
+
+.textUnderline{
     border-bottom-width: 5px;
     border-bottom-style: solid;
     border-bottom-color: #f64c72;
-    width: fit-content;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.button{
+
+
+.action-button{
+    font-family: impact, sans-serif;
     margin: 1rem;
-    display: inline-block;
-    background-color: white;
-    color: white;
+    background-color: none;
+    color: #f64c72;
+    padding: 25px;
+    border-style: solid;
+    border-color: #f64c72;
+    border-width: 5px;
 }
+
+.action-button:hover{
+    font-family: impact, sans-serif;
+    margin: 1rem;
+    background-color: none;
+    color: #f64c72;
+    background-color: rgba(246,76,114, 0.2);
+    padding: 25px;
+    border-style: solid;
+    border-color: #f64c72;
+    border-width: 5px;
+}
+
+
+
+
 
 
 
