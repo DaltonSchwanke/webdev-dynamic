@@ -1,10 +1,11 @@
 html{
-    font-size: 16px;
+    font-size: 100%;
 }
 
 #body{
-    background-color: rgb(63, 89, 87);
+    background-color: linear-gradient(#2f2fa2 #242582);
 }
+
 
 h1{
     text-align: center;
@@ -15,12 +16,16 @@ h1{
     margin-bottom: 1rem;
 }
 
+p{
+    text-align: center;
+}
+
 .text{
-    font-size: 2rem;
+    font-size: clamp(0.5rem, 1vw + 1rem, 2rem);
     color: white;
     font-family: impact, sans-serif;
-    padding-bottom: 2px;
 }
+
 
 .textUnderline{
     border-bottom-width: 5px;
@@ -37,7 +42,7 @@ h1{
     margin: 1rem;
     background-color: none;
     color: #f64c72;
-    padding: 25px;
+    padding: 20px;
     border-style: solid;
     border-color: #f64c72;
     border-width: 5px;
@@ -49,10 +54,23 @@ h1{
     background-color: none;
     color: #f64c72;
     background-color: rgba(246,76,114, 0.2);
-    padding: 25px;
+    padding: 20px;
     border-style: solid;
     border-color: #f64c72;
     border-width: 5px;
+}
+
+.shape {
+  position: absolute;
+  width: 1600px;
+  height: 1500px;
+  background: rgba(26, 28, 95, 0.1);
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  top: -60%;
+  right: -20%; 
 }
 
 
