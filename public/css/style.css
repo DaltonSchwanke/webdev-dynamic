@@ -2,8 +2,8 @@ html{
     font-size: 100%;
 }
 
-#body{
-    background-color: linear-gradient(#2f2fa2 #242582);
+body{
+    background-color: #242582 !important;
 }
 
 
@@ -78,14 +78,21 @@ p{
     text-align: center;
     font-family: impact, sans-serif;
     margin: 1rem;
-    background-color: hidden;
+    background-color: transparent !important;
     color: #f64c72;
     padding: 20px;
     border-style: solid;
     border-color: #f64c72;
     border-width: 5px;
-    width: 10rem;
+    width: 12rem;
+    height: 3.5rem;
 }
+
+
+
+
+
+
 
 
 
