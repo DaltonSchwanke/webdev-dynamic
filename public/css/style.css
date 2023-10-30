@@ -13,7 +13,6 @@ h1{
 
 .margins{
     margin: 1rem;
-    margin-bottom: 1rem;
 }
 
 p{
@@ -39,6 +38,7 @@ p{
 
 .action-button{
     font-family: impact, sans-serif;
+    font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem);
     margin: 1rem;
     background-color: none;
     color: #f64c72;
@@ -72,6 +72,33 @@ p{
   top: -60%;
   right: -20%; 
 }
+
+
+.select{
+    text-align: center;
+    font-family: impact, sans-serif;
+    margin: 1rem;
+    background-color: hidden;
+    color: #f64c72;
+    padding: 20px;
+    border-style: solid;
+    border-color: #f64c72;
+    border-width: 5px;
+    width: 10rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -7,43 +7,65 @@
 		<link rel="stylesheet" type="text/css" href="../public/css/foundation.css"/>
 	<title>RenewableEnergy</title>
 	</head>
-	<body class="grid-x" style="background-color: #2f2fa2">
-		<div class="shape"></div>
-		<div class="cell small-12 large-12 columns" style="align-content: center;">
-			<h1 class="margins; text" style="margin: 1rem; font-size: clamp(1rem, 1vw + 2rem, 4rem); margin-top: 2rem;">
-				Compare Regions
-			</h1>
-		</div>
-		<div class="cell medium-12 large-6 columns">
-			<div class="grid-x" style="background-color: yellow;">
-				<div class="cell small-4 large-4 columns" style="text-align: center;">
-					<button class="action-button" style="border-radius: 50px" type="button">Previous</button>
-				</div>
-				<div class="cell small-4 large-4 columns" style="text-align: center;">
-					<p class="text" style="margin-top: auto;">
-						$$TITLE$$
-					</p>
-				</div>
-				<div class="cell small-4 large-4 columns" style="text-align: center;">
-					<button class="action-button" style="border-radius: 50px;" type="button">Next</button>
-				</div>
+	<body style="background-color: #2f2fa2">
+		<div class="grid-x">
+			<div class="cell small-12 large-12" style="text-align: center;">
+				<button class="action-button1" style="border-radius: 50px; float: left;" type="button"></button>
+				<h1 class="margins; text" style="margin: 1rem; font-size: clamp(1rem, 1vw + 2rem, 4rem); margin-top: 2rem;">
+					Compare Consumption of Regions
+				</h1>
 			</div>
-			<div class="cell large-4 rows; margins" style="text-align: center">
-				<div class="text" style="border-bottom: hidden; text-align: center;">
+            <div class="cell small-4" style="text-align: center;">
+				<button class="action-button" style="border-radius: 50px;" type="button">
+					<a style="color: #f64c72;" href="temp.html">Year</a>
+				</button>
+			</div>
+			<div class="cell small-4" style="text-align: center;">
+				<button class="action-button" style="border-radius: 50px;" type="button">
+					<a style="color: #f64c72;" href="temp1.html">Region</a>
+				</button>
+			</div>
+			<div class="cell small-4" style="text-align: center;">
+				<button class="action-button" style="border-radius: 50px;" type="button">
+					<a style="color: #f64c72;" href="temp2.html">Compare</a>
+				</button>
+			</div>
+			<div class="cell medium-12 large-6 columns" style="text-align: center">
+                <div class="grid-x">
+                    <div class="cell small-6 large-6 columns">
+                        <select name="select a region" class="text; select" style="font-size: 1rem; border-radius: 50px;">
+                           <optgroup style="text-align: left" label="Select a Region">
+                                <option value="$$EUROPE$$">Europe</option>
+                                <option value="$$NORTHAMERICA$$">North America</option>
+                                <option value="$$LATINAMERICA$$">Latin America</option>
+                                <option value="$$ASIA$$">Asia</option>
+                                <option value="$$PACIFIC$$">Pacific</option>
+                                <option value="$$AFRICA$$">Africa</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="cell small-6 large-6 columns">
+                        <select name="select a region" class="text; select" style="font-size: 1rem; border-radius: 50px;">
+                           <optgroup style="text-align: left" label="Select a Region">
+                                <option value="$$EUROPE$$">Europe</option>
+                                <option value="$$NORTHAMERICA$$">North America</option>
+                                <option value="$$LATINAMERICA$$">Latin America</option>
+                                <option value="$$ASIA$$">Asia</option>
+                                <option value="$$PACIFIC$$">Pacific</option>
+                                <option value="$$AFRICA$$">Africa</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+				<div class="text" style="text-align: center; margin: 2rem">
 					$$TABLE$$
 				</div>
 			</div>
-		</div>
-		<div class="cell medium-12 large-6 columns; grid-y">
-			<div class="grid-y">
-				<div class="cell large-10 rows; margins" style="text-align: center;">
-					<img class="text" style="font-size: 1rem" src="$$IMAGE$$" alt="$$DESCRIPTION$$"/>
-				</div>
-				<div class="cell large-4 rows" style="text-align: center;">
-					<p class="margins; text">
-						$$PARAGRAPH$$
-					</p>
-				</div>
+			<div class="cell medium-12 large-6 columns;" style="text-align: center;">
+				<img class="text" style="font-size: 1rem; margin: 1rem;" src="$$IMAGE$$" alt="$$DESCRIPTION$$"/>
+				<p class="text" style="margin: 1rem">
+					$$PARAGRAPH$$
+				</p>
 			</div>
 		</div>
 	</body>
