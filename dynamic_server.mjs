@@ -34,15 +34,17 @@ const db = new sqlite3.Database(path.join(__dirname, 'cereal.sqlite3'), sqlite3.
 });
 
 
+
 //Button Functions for years
 function incrementYear(){
-  if(yearIndex == yearSize){yearIndex = 0;}
+  if(yearIndex == yearSize - 1){yearIndex = 0;}
   else{yearIndex += 1;}
 }
 function decrementYear(){
   if(yearIndex == 0){yearIndex = size - 1;}
   else{yearIndex -= 1;}
 }
+
 
 
 //Button function for Regions
@@ -56,17 +58,17 @@ function nextRegion(){
 }
 
 
+
 //function for getting selector option
 function getOption1(){
-
+  option1 = document.getElementById("dropdown1").value;
 }
-
 //function for getting selector option
 function getOption2(){
-
+  option2 = document.getElementById("dropdown2").value;
 }
 
-
+  
 
 
 

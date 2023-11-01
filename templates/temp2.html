@@ -32,7 +32,7 @@
 			<div class="cell medium-12 large-6 columns" style="text-align: center;">
                 <div class="grid-x">
                     <div class="cell small-6 large-6 columns">
-                        <select name="select a region" class="text; select" style="font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem); border-radius: 50px;">
+                        <select id="dropdown1" oninput="getOption1()" name="select a region" class="text; select" style="font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem); border-radius: 50px;">
                            <optgroup style="text-align: left" label="Select a Region">
                                 <option value="$$EUROPE$$">Europe</option>
                                 <option value="$$NORTHAMERICA$$">North America</option>
@@ -44,7 +44,7 @@
                         </select>
                     </div>
                     <div class="cell small-6 large-6 columns">
-                        <select name="select a region" class="text; select" style="font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem); border-radius: 50px;">
+                        <select id="dropdown2" oninput="getOption2()" name="select a region" class="text; select" style="font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem); border-radius: 50px;">
                            <optgroup style="text-align: left" label="Select a Region">
                                 <option value="$$EUROPE$$">Europe</option>
                                 <option value="$$NORTHAMERICA$$">North America</option>
