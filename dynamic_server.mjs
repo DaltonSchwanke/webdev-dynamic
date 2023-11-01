@@ -5,100 +5,79 @@ import * as url from 'node:url';
 import { default as express } from 'express';
 import { default as sqlite3 } from 'sqlite3';
 
+const port = 3000;
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-
-const port = 8000;
 const root = path.join(__dirname, 'public');
 const template = path.join(__dirname, 'templates');
 
 let app = express();
 app.use(express.static(root));
 
+let option1 = "";
+let option2 = "";
+let yearIndex = 0;
+let regionIndex = 0;
+let yearSize = 0;
+let regionsSize = 6;
+let years = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
+let regions = ['Europe', 'North America', 'Latin America', 'Asia', 'Pacific', 'Africa'];
+
+
+//need to change the database file name
+const db = new sqlite3.Database(path.join(__dirname, 'cereal.sqlite3'), sqlite3.OPEN_READONLY, (err) => {
+    if (err) {
+        console.log('Error connecting to database');
+    }
+    else {
+        console.log('Successfully connected to database');
+    }
+});
+
+
+//Button Functions for years
+function incrementYear(){
+  if(yearIndex == yearSize){yearIndex = 0;}
+  else{yearIndex += 1;}
+}
+function decrementYear(){
+  if(yearIndex == 0){yearIndex = size - 1;}
+  else{yearIndex -= 1;}
+}
+
+
+//Button function for Regions
+function previousRegion(){
+  if(regionIndex == 0){regionIndex = size -1;}
+  else{regionIndex -= 1;}
+}
+function nextRegion(){
+  if(regionIndex == size - 1){regionIndex = 0;}
+  else{regionIndex += 1;}
+}
+
+
+//function for getting selector option
+function getOption1(){
+
+}
+
+//function for getting selector option
+function getOption2(){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Doesn't need to be changed
 app.listen(port, () => {
     console.log('Now listening on port ' + port);
-});
-
-
-const express = require('express');
-
-// Sample sustainability data
-const sustainabilityData = [
-  { Year: 2020, World: 100, OECD: 50 },
-  { Year: 2021, World: 110, OECD: 55 },
-  // Add more data for other years and regions
-];
-
-
-app.get('/tables', (req, res) => {
-  // Generate an HTML table dynamically
-  const tableHtml = `
-    <table>
-      <tr>
-        <th>Year</th>
-        <th>World</th>
-        <th>OECD</th>
-        <!-- Add more table headers for other regions -->
-      </tr>
-      ${sustainabilityData.map(item => `
-        <tr>
-          <td>${item.Year}</td>
-          <td>${item.World}</td>
-          <td>${item.OECD}</td>
-          <!-- Add more table data for other regions -->
-        </tr>
-      `).join('')}
-    </table>
-  `;
-
-  res.send(`
-    <html>
-      <head>
-        <title>Sustainability Data - Tables</title>
-      </head>
-      <body>
-        <h1>Sustainability Data - Tables</h1>
-        ${tableHtml}
-      </body>
-    </html>
-  `);
-});
-
-app.get('/graphs', (req, res) => {
-  res.send(`
-    <html>
-      <head>
-        <title>Sustainability Data - Graphs</title>
-        <!-- Include Chart.js library via CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      </head>
-      <body>
-        <h1>Sustainability Data - Graphs</h1>
-        <canvas id="sustainabilityChart" width="400" height="200"></canvas>
-        <script>
-          var ctx = document.getElementById('sustainabilityChart').getContext('2d');
-          var data = ${JSON.stringify(sustainabilityData)};
-
-          var years = data.map(item => item.Year);
-          var worldData = data.map(item => item.World);
-
-          new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: years,
-              datasets: [{
-                label: 'World',
-                data: worldData,
-                borderColor: 'blue',
-                fill: false,
-              }],
-            },
-          });
-        </script>
-      </body>
-    </html>
-  `);
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
 });
