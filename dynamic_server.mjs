@@ -14,7 +14,6 @@ app.use(express.static(root));
 
 
 
-/*
 const db = new sqlite3.Database(path.join(__dirname, 'data.sqlite3'), sqlite3.OPEN_READONLY, (err) => {
     if (err) {
         console.log('Error connecting to database');
@@ -66,7 +65,7 @@ app.get('/:name', (req, res) => {
         res.status(404).type('txt').send("File Not Found");
     })
 });
-*/
+
 
 app.listen(port, () => {
     console.log('Now listening on port ' + port);
