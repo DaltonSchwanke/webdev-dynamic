@@ -1,6 +1,7 @@
 import * as path from 'node:path';
 import * as url from 'node:url';
 
+
 import { default as express } from 'express';
 import { default as sqlite3 } from 'sqlite3';
 
@@ -15,12 +16,8 @@ app.use(express.static(root));
 
 
 const db = new sqlite3.Database(path.join(__dirname, 'data.sqlite3'), sqlite3.OPEN_READONLY, (err) => {
-    if (err) {
-        console.log('Error connecting to database');
-    }
-    else {
-        console.log('Successfully connected to database');
-    }
+    if (err) {console.log('Error connecting to database');}
+    else {console.log('Successfully connected to database');}
 });
 
 
@@ -40,15 +37,15 @@ function dbSelect(query, params) {
 
 
 app.get('/:name', (req, res) => {
-    let manufacturer = req.params.name.toUpperCase();
-    console.log(manufacturer);
+    let region = req.params.name.toUpperCase();
+    console.log(region);
 
     let query1 = 'SELECT * FROM Cereals WHERE mfr = ?';
     let query2 = 'SELECT * FROM Manufacturers WHERE id = ?';
-    let p1 = dbSelect(query1, [manufacturer]);
-    let p2 = dbSelect(query2, [manufacturer]);
+    let p1 = dbSelect(query1, [region]);
+    let p2 = dbSelect(query2, [region]);
     Promise.all([p1, p2]).then((results) => {
-        let response = results[2].replace('$$MFR_NAME$$', results[1][0].name);
+        let response = results[2].replace('$$', results[1][0].name);
         let table_body = '';
         results[0].forEach((cereal) => {
             let table_row = '<tr>';
@@ -65,6 +62,9 @@ app.get('/:name', (req, res) => {
         res.status(404).type('txt').send("File Not Found");
     })
 });
+
+
+
 
 
 app.listen(port, () => {
