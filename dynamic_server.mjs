@@ -39,6 +39,7 @@ function dbSelect(query, params) {
 
 
 
+
 app.get('/', (req, res) => {
     fs.promises.readFile(path.join(templates, 'index.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
@@ -49,7 +50,6 @@ app.get('/', (req, res) => {
 
 
 
-
 app.get('/index.html', (req, res) => {
     fs.promises.readFile(path.join(templates, 'index.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
@@ -57,7 +57,6 @@ app.get('/index.html', (req, res) => {
         res.status(404).type('txt').send('File Not Found');
     });
 });
-
 
 
 
@@ -78,7 +77,7 @@ app.get('/temp1.html', (req, res) => {
 
 
 app.get('/temp2.html', (req, res) => {
-    fs.promises.readFile(path.join(templates, 'index2.html'), 'utf-8').then((template) => {
+    fs.promises.readFile(path.join(templates, 'temp2.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
     }).catch((err) => {
         res.status(404).type('txt').send('File Not Found');

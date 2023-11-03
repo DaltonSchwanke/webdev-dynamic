@@ -3,11 +3,18 @@
     "description": "Dynamic Server",
     "version": "1.0.0",
     "author": {
-        "name": "",
-        "email": ""
+        "name": "Dalton Schwanke",
+        "email": "schw1057@stthomas.edu"
     },
-    "contributors": [],
-    "repository": {},
+    "contributors": [
+        {
+            "name": "Rafay Malik",
+            "email": "rafay.malik@stthomas.edu"
+        }
+    ],
+    "repository": {
+        "url": "https://github.com/DaltonSchwanke/webdev-dynamic"
+    },
     "dependencies": {
         "express": "^4.18.2",
         "sqlite3": "^5.1.6"
