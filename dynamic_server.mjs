@@ -4,7 +4,7 @@ import * as url from 'node:url';
 import { default as express } from 'express';
 import { default as sqlite3 } from 'sqlite3';
 
-const port = 8088;
+const port = 8000;
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const root = path.join(__dirname, 'public');
 const templates = path.join(__dirname, 'templates');
@@ -32,6 +32,13 @@ function dbSelect(query, params) {
     });
 }
 
+
+
+
+
+
+
+
 app.get('/', (req, res) => {
     fs.promises.readFile(path.join(templates, 'index.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
@@ -39,6 +46,8 @@ app.get('/', (req, res) => {
         res.status(404).type('txt').send('File Not Found');
     });
 });
+
+
 
 
 app.get('/index.html', (req, res) => {
@@ -49,6 +58,13 @@ app.get('/index.html', (req, res) => {
     });
 });
 
+
+
+
+
+
+
+
 app.get('/temp1.html', (req, res) => {
     fs.promises.readFile(path.join(templates, 'temp1.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
@@ -57,13 +73,23 @@ app.get('/temp1.html', (req, res) => {
     });
 });
 
+
+
+
+
 app.get('/temp2.html', (req, res) => {
-    fs.promises.readFile(path.join(templates, 'temp2.html'), 'utf-8').then((template) => {
+    fs.promises.readFile(path.join(templates, 'index2.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
     }).catch((err) => {
         res.status(404).type('txt').send('File Not Found');
     });
 });
+
+
+
+
+
+
 
 
 
