@@ -32,7 +32,7 @@ function dbSelect(query, params) {
     });
 }
 
-app.get('', (req, res) => {
+app.get('/', (req, res) => {
     fs.promises.readFile(path.join(templates, 'index.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
     }).catch((err) => {
@@ -57,7 +57,7 @@ app.get('/temp1.html', (req, res) => {
     });
 });
 
-app.get('/temp2.html/:reg1/:reg2', (req, res) => {
+app.get('/temp2.html', (req, res) => {
     fs.promises.readFile(path.join(templates, 'temp2.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
     }).catch((err) => {
@@ -65,28 +65,6 @@ app.get('/temp2.html/:reg1/:reg2', (req, res) => {
     });
 });
 
-app.get('/year/:num', (req, res) => {
-    let num = req.params.num;
-    
-    let prom1 = dbSelect('SELECT * FROM MY_TABLE WHERE year = ?', [manufactuer.toUpperCase()]);
-    let prom3 = fs.promises.readFile(path.join(template, 'review1.html'), 'utf-8');
-    Promise.all([prom1,prom3]).then((results) => {
-        let response = results[2].replace('$$TABLE$$',results[1][0].num);
-        let table_body = '';
-        results[0].forEach((num, index) =>{
-        let table_row = '<tr>';
-        table_row += '<td>' + num.year + '</td>';
-        table_row += '<td>' +num.world + '</td>';
-        table_row += '<td>' + num.europe + '</td>';
-        table_row += '<td>' + num.asia+ '</td>';
-            table_row += '</tr>';
-    table_body += table_row;
-    });
-    response = response.replace('$$TABLE_BODY$$', table_body);
-    res.status(200).type('html').send(response);
-    }).catch((error)=>{
-    res.status(400).type('txt').send('Error: File Not Found');
-});
 
 
 app.listen(port, () => {
