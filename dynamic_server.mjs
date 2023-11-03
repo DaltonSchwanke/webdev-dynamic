@@ -31,74 +31,63 @@ function dbSelect(query, params) {
         });
     });
 }
-app.get('/year/:year', (req, res) => {
+
+app.get('', (req, res) => {
+    fs.promises.readFile(path.join(templates, 'index.html'), 'utf-8').then((template) => {
+        res.status(200).type('html').send(template);
+    }).catch((err) => {
+        res.status(404).type('txt').send('File Not Found');
+    });
+});
+
+
+app.get('/index.html', (req, res) => {
+    fs.promises.readFile(path.join(templates, 'index.html'), 'utf-8').then((template) => {
+        res.status(200).type('html').send(template);
+    }).catch((err) => {
+        res.status(404).type('txt').send('File Not Found');
+    });
+});
+
+app.get('/temp1.html', (req, res) => {
     fs.promises.readFile(path.join(templates, 'temp1.html'), 'utf-8').then((template) => {
         res.status(200).type('html').send(template);
     }).catch((err) => {
         res.status(404).type('txt').send('File Not Found');
     });
 });
-app.get('/:name', async (req, res) => {
-    const region = req.params.name.toUpperCase();
-    console.log(region);
 
-    const query1 = 'SELECT * FROM Cereals WHERE mfr = ?';
-    const query2 = 'SELECT * FROM Manufacturers WHERE id = ?';
-
-    try {
-        const [cereals, manufacturer] = await Promise.all([dbSelect(query1, [region]), dbSelect(query2, [region])]);
-        
-        const response = manufacturer[0].name;
-
-        res.send(`
-            <html>
-            <head>
-                <title>${response}</title>
-            </head>
-            <body>
-                <h1>${response}</h1>
-                <table>
-                    <tr><th>Name</th><th>Type</th><th>Calories</th><th>Fat</th><th>Protein</th><th>Carbohydrates</th></tr>
-                    ${cereals.map(cereal => `
-                        <tr>
-                            <td>${cereal.name}</td>
-                            <td>${cereal.type}</td>
-                            <td>${cereal.calories}</td>
-                            <td>${cereal.fat}</td>
-                            <td>${cereal.protein}</td>
-                            <td>${cereal.carbohydrates}</td>
-                        </tr>`).join('')}
-                </table>
-                <div id="chart-container">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script>
-                    const labels = ['Calories', 'Fat', 'Protein', 'Carbohydrates'];
-                    const data = [${cereals[0].calories}, ${cereals[0].fat}, ${cereals[0].protein}, ${cereals[0].carbohydrates}];
-
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Cereal Data',
-                                data: data,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1,
-                            }],
-                        },
-                    });
-                </script>
-            </body>
-            </html>
-        `);
-    } catch (error) {
+app.get('/temp2.html/:reg1/:reg2', (req, res) => {
+    fs.promises.readFile(path.join(templates, 'temp2.html'), 'utf-8').then((template) => {
+        res.status(200).type('html').send(template);
+    }).catch((err) => {
         res.status(404).type('txt').send('File Not Found');
-    }
+    });
 });
+
+app.get('/year/:num', (req, res) => {
+    let num = req.params.num;
+    
+    let prom1 = dbSelect('SELECT * FROM MY_TABLE WHERE year = ?', [manufactuer.toUpperCase()]);
+    let prom3 = fs.promises.readFile(path.join(template, 'review1.html'), 'utf-8');
+    Promise.all([prom1,prom3]).then((results) => {
+        let response = results[2].replace('$$TABLE$$',results[1][0].num);
+        let table_body = '';
+        results[0].forEach((num, index) =>{
+        let table_row = '<tr>';
+        table_row += '<td>' + num.year + '</td>';
+        table_row += '<td>' +num.world + '</td>';
+        table_row += '<td>' + num.europe + '</td>';
+        table_row += '<td>' + num.asia+ '</td>';
+            table_row += '</tr>';
+    table_body += table_row;
+    });
+    response = response.replace('$$TABLE_BODY$$', table_body);
+    res.status(200).type('html').send(response);
+    }).catch((error)=>{
+    res.status(400).type('txt').send('Error: File Not Found');
+});
+
 
 app.listen(port, () => {
     console.log('Now listening on port ' + port);
